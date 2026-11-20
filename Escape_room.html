@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#ad2a2b"><meta name="description" content="Búsqueda del tesoro matemática de CDI en seis actos. Resuelve acertijos sin pistas, descubre un cofre y descifra braille."><title>El Gran Circo del Cálculo · La página perdida</title><style>
+:root{--ink:#2d1e17;--cream:#f6eccf;--cream2:#fff8e4;--red:#ad2a2b;--darkred:#761b20;--gold:#e6b64b;--mint:#e2efd6;--border:5px solid var(--ink)}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;color:var(--ink);background:var(--cream);font-family: 'Trebuchet MS',Verdana,Arial,sans-serif;background-image:radial-gradient(#b09b78 0.7px,transparent 0.7px);background-size:14px 14px} button,input{font:inherit} a{color:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,a:focus-visible{outline:4px solid #37699b;outline-offset:3px}
+.stage-curtain{height:44px;border-bottom:var(--border);background:repeating-linear-gradient(90deg,var(--darkred) 0,var(--darkred) 50px,#d4513d 50px,#d4513d 96px);position:relative}.stage-curtain:after{content:"";position:absolute;bottom:-20px;left:0;right:0;height:21px;background:radial-gradient(circle at 22px 0,var(--darkred) 21px,transparent 22px) 0 0/96px 22px repeat-x;pointer-events:none}
+.shell{max-width:1110px;margin:0 auto;padding:30px 22px 90px}.topline{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:10px 0 22px;font-size:12px;letter-spacing:2px;font-weight:900;text-transform:uppercase}.edition{border:2px solid var(--ink);padding:7px 11px;background:var(--cream2);transform:rotate(-2deg)}.roundel{background:var(--ink);color:var(--cream2);border-radius:100px;padding:8px 14px;white-space:nowrap}
+.hero{background:var(--red);border:var(--border);border-radius:130px 130px 24px 24px;box-shadow:11px 12px 0 var(--ink);color:var(--cream2);padding:24px 36px 8px;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;inset:8px;border:3px dashed var(--gold);border-radius:120px 120px 16px 16px;pointer-events:none}.bulb-row{position:relative;display:flex;justify-content:center;gap:15px;margin:0 0 10px}.bulb-row span{width:11px;height:11px;background:#ffd970;border:2px solid #42251a;border-radius:50%;box-shadow:0 0 10px #ffd97066}.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:12px;min-height:340px}.hero-copy{text-align:center;z-index:1;position:relative}.small-intro{text-transform:uppercase;font-size:13px;letter-spacing:5px;margin:0;font-weight:900}.hero h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(42px,7.1vw,84px);line-height:.9;letter-spacing:-2px;margin:15px 0 18px;text-shadow:4px 4px 0 var(--ink)}.hero h1 span{color:#f7cf68}.subtitle{font-weight:800;letter-spacing:1px;font-size:clamp(13px,1.6vw,17px);margin:0 0 14px}.ticket-stamp{display:inline-block;border:3px solid var(--gold);border-radius:100px;padding:9px 19px;color:var(--gold);font-size:12px;letter-spacing:2px;font-weight:900;text-transform:uppercase;transform:rotate(-3deg)}.art-wrap{position:relative;display:flex;justify-content:center;align-items:center;min-height:300px}.art-wrap:before{content:"";width:260px;height:260px;position:absolute;background:radial-gradient(circle,#f9d779 0 28%,transparent 29%),repeating-conic-gradient(#f5ca6a 0 18deg,transparent 18deg 36deg);border-radius:50%;opacity:.32}.mascot{height:345px;width:min(100%,330px);position:relative;filter:drop-shadow(5px 6px 0 #6b1817);animation:floaty 4s ease-in-out infinite}@keyframes floaty{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-9px) rotate(1deg)}}
+.ribbon{text-align:center;display:block;background:var(--gold);color:var(--ink);width:max-content;max-width:100%;margin:14px auto 0;padding:10px 28px;transform:rotate(-1deg);border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);font-family:Georgia,serif;font-style:italic;font-weight:900}
+.two-col{display:grid;grid-template-columns:300px minmax(0,1fr);gap:24px;margin-top:45px;align-items:start}.panel{background:var(--cream2);border:4px solid var(--ink);box-shadow:7px 7px 0 var(--ink);border-radius:14px;padding:24px}.sidebar h2,.act-box h2,.finished h2{font-family:Georgia,serif}.sidebar h2{font-size:23px;margin:0 0 12px;text-align:center}.sidebar p,.sidebar li{line-height:1.6;font-size:14px}.sidebar ul{padding-left:20px;margin-bottom:10px}.sidebar li{margin-bottom:8px}.notice{border:2px dashed var(--red);background:#fff0d0;padding:13px;border-radius:7px;margin-top:16px;font-size:13px;line-height:1.6}.notice strong{color:var(--darkred)}.sign{background:var(--ink);color:var(--cream2);font-family:Georgia,serif;text-align:center;padding:10px;margin:-24px -24px 19px;border-radius:9px 9px 0 0;font-size:16px;font-style:italic}
+.progress-head{display:flex;justify-content:space-between;align-items:center;gap:10px;font-weight:900;font-size:13px;letter-spacing:1.2px;text-transform:uppercase}.track{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin:12px 0 22px}.track span{height:13px;border:2px solid var(--ink);border-radius:16px;background:#e2d9c4}.track span.done{background:#83ad81}.track span.active{background:var(--gold)}.act-box{min-height:430px}.act-badge{display:inline-block;background:var(--gold);padding:6px 14px;font-weight:900;font-size:12px;text-transform:uppercase;letter-spacing:1.8px;transform:rotate(-2deg);border:2px solid var(--ink)}.act-box h2{font-size:clamp(28px,4vw,43px);line-height:1.1;margin:17px 0 12px}.story{font-size:15px;line-height:1.75;max-width:700px}.puzzle{background:#f0e5c6;border:2px solid #7b6346;border-radius:9px;padding:16px 17px;margin:18px 0;line-height:1.7}.puzzle strong{color:#832429}.puzzle blockquote{border-left:4px solid var(--red);margin:10px 0;padding:2px 0 2px 15px;font-family:Georgia,serif;font-style:italic;font-size:17px;line-height:1.7}.math-list{margin:7px 0 0;padding-left:24px}.math-list li{margin-bottom:6px}.math{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:1.08em}.equation{font-family:Georgia,serif;background:#fff9eb;border:1px solid #b9a680;border-radius:5px;padding:9px;margin:10px 0;overflow-x:auto;font-size:17px}
+.answer-label{display:block;font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:1px;margin:18px 0 9px}.answer-row{display:flex;gap:10px;flex-wrap:wrap}.answer-row input{min-width:0;flex:1 1 230px;border:3px solid var(--ink);background:#fffdf6;border-radius:8px;padding:15px;font-weight:900;font-size:18px;letter-spacing:1px;color:var(--ink);text-transform:uppercase}.answer-row input::placeholder{color:#8b8374;font-weight:400;letter-spacing:0}.btn{border:3px solid var(--ink);border-radius:9px;box-shadow:4px 4px 0 var(--ink);padding:13px 19px;font-weight:900;text-transform:uppercase;letter-spacing:1px;font-size:13px;transition:transform .12s,box-shadow .12s}.btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}.btn-primary{background:var(--gold);color:var(--ink)}.btn-secondary{background:var(--cream2)}.btn-telegram{background:#1e7791;color:white}.hint-buttons{display:flex;gap:11px;flex-wrap:wrap;margin-top:19px}.feedback{min-height:32px;margin-top:14px;border-radius:8px;line-height:1.6;display:none;padding:13px 16px;font-weight:700;font-size:14px}.feedback.show{display:block}.feedback.wrong{background:#fae0d5;border:2px solid #a53429}.feedback.right{background:var(--mint);border:2px solid #386747}.feedback.info{background:#fff2c0;border:2px solid #9d7726}.reveal{background:#e1efdb;border:3px dashed #426e3d;padding:20px;border-radius:11px;margin:18px 0;animation:pop .3s ease-out}.reveal h3{font-family:Georgia,serif;font-size:23px;margin:0 0 9px}.reveal p{line-height:1.65;margin:8px 0 14px}@keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}.visible-hint{background:#fff6d5;border:2px solid var(--gold);padding:12px 14px;margin-top:11px;border-radius:8px;font-size:14px;line-height:1.6}.end{line-height:1.8}.end h2{font-size:36px}.winner-title{display:inline-block;background:var(--gold);font-weight:bold;border:3px solid var(--ink);padding:8px 14px;transform:rotate(-2deg)}.tg-instructions{background:#fff0d6;border-left:6px solid var(--red);padding:13px 16px}.tg-instructions li{margin:10px 0}.mini-links{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:19px 0}.finish-small{font-size:12px;color:#66554b}.foot{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:28px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px}.reset{border:0;background:transparent;text-decoration:underline;color:inherit;font-weight:800;cursor:pointer}.star{color:var(--red)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:780px){.two-col{grid-template-columns:1fr}.hero{border-radius:60px 60px 18px 18px;padding:24px 23px 0}.hero:before{border-radius:52px 52px 10px 10px}.hero-grid{grid-template-columns:1fr;text-align:center;gap:0}.hero h1{font-size:clamp(46px,10vw,72px)}.art-wrap{min-height:210px}.mascot{height:225px}.shell{padding:18px 14px 60px}.sidebar{order:2}.stage-curtain{height:30px}.topline{font-size:10px;letter-spacing:.7px}.ribbon{font-size:13px}.panel{padding:20px}.sign{margin:-20px -20px 17px}.two-col{margin-top:32px}.act-box{min-height:0}.answer-row .btn{width:100%}}
+@media(max-width:380px){.hero h1{font-size:41px}.roundel{display:none}.panel{padding:16px}.sign{margin:-16px -16px 17px}.puzzle{padding:13px}.shell{padding-left:10px;padding-right:10px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media(min-width:781px){.quick-rules{display:none}}.quick-rules{background:#fff8e4;border:3px solid #2d1e17;box-shadow:4px 4px 0 #2d1e17;border-radius:9px;padding:11px 16px;margin:27px 4px -15px;font-size:13px;line-height:1.5;text-align:center}
+/* Ajustes de la segunda edición */
+.math-zone{font-size:1.04rem;overflow-x:auto;overflow-y:hidden;padding:2px 0}
+.math-zone .MathJax{max-width:100%}
+.math-code{background:#fff9eb;border:1px solid #c4b493;border-radius:8px;padding:14px;margin:13px 0;text-align:center;overflow:auto}
+.math-code mjx-container[display="true"]{margin:.35em 0!important}
+.acts-controls{display:flex;justify-content:space-between;gap:11px;flex-wrap:wrap;margin-top:21px}
+.acts-controls button{flex:1 1 160px}
+.btn:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:2px 2px 0 var(--ink)}
+.back-mini{display:inline-block;margin-top:11px;color:var(--darkred);font-weight:900;text-decoration:underline;background:transparent;border:0;padding:9px 0}
+.chest-info{background:#fff0d3;border:3px dashed #8d3828;border-radius:10px;padding:16px;margin-top:17px;line-height:1.7}
+.secret{letter-spacing:1px;background:#ece4d3;border:2px solid var(--ink);padding:5px 10px;display:inline-block;margin-top:5px}
+.braille{font-family:'Segoe UI Symbol','DejaVu Sans','Arial Unicode MS',sans-serif;font-weight:500;font-size:clamp(24px,4vw,37px);line-height:1.8;letter-spacing:2.5px;overflow-wrap:anywhere;text-align:center;background:#fffaf0;border:3px solid #9b7f51;border-radius:12px;padding:20px 10px;margin:14px 0}
+.braille>span{display:block;margin-bottom:4px}
+.braille-meta{font-size:12px;text-align:center;color:#695a42}.cofre-warning{background:#fff0d5;border-left:5px solid #ad2a2b;padding:12px 14px;border-radius:4px}
+.alphabet{border:2px solid #ac9164;border-radius:8px;padding:12px 15px;background:#fffaf0;text-align:center}
+.steps-legend{display:flex;justify-content:space-between;font-size:11px;font-weight:800;gap:5px;margin-top:-10px;margin-bottom:24px;text-transform:uppercase;color:#7b6451}
+.solved-pill{display:inline-block;padding:5px 10px;border:2px solid #426e3d;background:#dcebd5;border-radius:14px;font-size:11px;font-weight:900;text-transform:uppercase}
+.form-note{font-size:12px;color:#705d49;margin:8px 0 0;line-height:1.5}
+.footnote{font-size:12px;color:#66554b;line-height:1.6}
+@media(max-width:780px){.acts-controls{flex-direction:column}.acts-controls button{width:100%}.braille{font-size:23px;letter-spacing:1px}}
+
+/* Boleto obligatorio: el primer acto no se muestra hasta aceptar las condiciones. */
+[hidden]{display:none!important}
+.consent-gate{max-width:860px;margin:40px auto 0;background:var(--cream2);border:5px solid var(--ink);border-radius:18px;box-shadow:10px 11px 0 var(--ink);overflow:hidden}
+.consent-top{background:var(--darkred);color:#fff3ce;text-align:center;padding:20px 25px;border-bottom:5px solid var(--ink);background-image:repeating-linear-gradient(135deg,transparent 0 14px,#ffffff0d 14px 17px)}
+.consent-kicker{text-transform:uppercase;font-weight:900;letter-spacing:3px;font-size:12px;margin:0 0 8px;color:#f7cc71}
+.consent-top h2{font:900 clamp(28px,4vw,39px)/1.13 Georgia,'Times New Roman',serif;margin:0 0 8px}
+.consent-top p{margin:0;line-height:1.55}
+.consent-body{padding:24px 32px 28px;line-height:1.6}
+.consent-body>p{margin:0 0 13px}
+.consent-rules{padding:0;list-style:none;counter-reset:rule;margin:16px 0 20px;display:grid;gap:11px}
+.consent-rules li{counter-increment:rule;background:#fff4d9;border:2px solid #b9955f;border-radius:9px;padding:12px 15px 12px 54px;position:relative;font-size:15px}
+.consent-rules li:before{content:counter(rule);position:absolute;left:12px;top:12px;display:grid;place-items:center;width:29px;height:29px;border-radius:50%;background:var(--gold);border:2px solid var(--ink);font-weight:900}
+.consent-rules strong{color:#7b1e22}
+.consent-accept{display:flex;align-items:flex-start;gap:13px;cursor:pointer;border:3px solid #8b6645;border-radius:10px;background:#fffaf0;padding:16px;font-size:15px;font-weight:900;line-height:1.6}
+.consent-accept input{flex:none;width:25px;height:25px;accent-color:var(--red);margin:0;cursor:pointer}
+.consent-action{display:flex;align-items:center;gap:15px;flex-wrap:wrap;margin-top:20px}
+.consent-action .btn:disabled{opacity:.45;cursor:not-allowed;box-shadow:none;transform:none}
+.consent-footnote{color:#6d5a4c;font-size:12px;line-height:1.55;margin:12px 0 0!important}
+@media(max-width:640px){.consent-body{padding:18px}.consent-rules li{font-size:14px}.consent-action .btn{width:100%}.consent-gate{margin-top:29px}}
+</style><script>
+window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]],processEscapes:true},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']},startup:{typeset:false}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head><body>
+<div class="stage-curtain" aria-hidden="true"></div><main class="shell"><div class="topline"><span class="edition">EDICIÓN ESPECIAL · CDI</span><span class="roundel">★ ENTRADA GRATUITA ★</span></div>
+<header class="hero"><div class="bulb-row" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="hero-grid"><div class="hero-copy"><p class="small-intro">¡Pasen y descubran!</p><h1>EL GRAN<br><span>CIRCO</span><br>DEL CÁLCULO</h1><p class="subtitle">LA INCREÍBLE BÚSQUEDA DE LA PÁGINA PERDIDA</p><div class="ticket-stamp">6 ACTOS · 1 TESORO · 2 NOMBRES</div></div><div class="art-wrap"><svg class="mascot" viewBox="0 0 360 410" role="img" aria-label="Tangentín, personaje original de dibujo animado clásico, saluda desde la pista del circo">
+ <defs><pattern id="halftone" width="13" height="13" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1.2" fill="#bdac91" opacity=".6"/></pattern></defs>
+ <ellipse cx="178" cy="370" rx="139" ry="18" fill="#3f261c" opacity=".17"/>
+ <!-- rubber-hose legs -->
+ <path d="M153 278 Q129 314 150 348 M201 277 Q235 302 221 347" fill="none" stroke="#211913" stroke-width="15" stroke-linecap="round"/>
+ <path d="M141 339 Q111 325 93 349 Q92 369 139 366 Q165 364 159 347Z" fill="#1b1715" stroke="#211913" stroke-width="7"/>
+ <path d="M215 338 Q242 321 266 341 Q277 362 229 367 Q205 368 207 348Z" fill="#1b1715" stroke="#211913" stroke-width="7"/>
+ <!-- noodle arms -->
+ <path d="M122 201 C74 191 84 153 64 132" stroke="#211913" stroke-width="13" stroke-linecap="round" fill="none"/>
+ <path d="M238 203 C276 200 292 218 310 187" stroke="#211913" stroke-width="13" stroke-linecap="round" fill="none"/>
+ <!-- suit -->
+ <path d="M136 180 Q172 168 215 178 Q249 214 237 279 Q179 301 119 278 Q113 212 136 180Z" fill="#ae3027" stroke="#211913" stroke-width="9" stroke-linejoin="round"/>
+ <path d="M135 184 L173 235 L210 182 Q182 169 135 184Z" fill="#fff0cc" stroke="#211913" stroke-width="6"/>
+ <path d="M173 228 L148 243 L153 262 L172 247 L194 265 L200 246Z" fill="#e6b34c" stroke="#211913" stroke-width="5"/>
+ <circle cx="179" cy="275" r="5.5" fill="#1f1814"/>
+ <!-- upper raised gloves -->
+ <path d="M55 138 C35 142 25 128 24 116 C21 107 38 104 45 114 L41 100 C39 89 51 86 56 98 L61 113 L61 94 C61 83 74 84 76 94 L75 112 L83 102 Q92 97 96 106 Q99 115 87 129 L72 144Z" fill="#fff9e9" stroke="#211913" stroke-width="7" stroke-linejoin="round"/>
+ <path d="M300 190 Q293 163 311 153 Q322 142 328 153 Q333 162 323 171 Q340 159 347 169 Q355 179 337 191 Q345 194 340 205 Q330 223 309 217Z" fill="#fff9e9" stroke="#211913" stroke-width="7" stroke-linejoin="round"/>
+ <!-- head -->
+ <ellipse cx="177" cy="118" rx="85" ry="85" fill="#fff5d8" stroke="#211913" stroke-width="10"/>
+ <path d="M116 92 C140 72 160 71 175 82 M178 80 Q199 68 228 92" fill="none" stroke="#211913" stroke-width="7" stroke-linecap="round"/>
+ <ellipse cx="153" cy="119" rx="20" ry="31" fill="#fffdf3" stroke="#211913" stroke-width="5"/>
+ <ellipse cx="198" cy="118" rx="20" ry="31" fill="#fffdf3" stroke="#211913" stroke-width="5"/>
+ <path d="M150 110 Q156 104 164 113 L166 137 Q155 147 148 132Z" fill="#171412"/>
+ <path d="M193 108 Q200 103 208 112 L209 135 Q199 144 192 132Z" fill="#171412"/>
+ <path d="M158 112 L164 119 L158 122Z M199 111 L206 120 L198 124Z" fill="#fff9e9"/>
+ <circle cx="179" cy="150" r="10" fill="#d44f3c" stroke="#211913" stroke-width="4"/>
+ <path d="M137 163 Q179 208 223 160 Q180 175 137 163Z" fill="#241b18" stroke="#211913" stroke-width="5" stroke-linejoin="round"/>
+ <path d="M160 180 Q181 170 202 183" fill="none" stroke="#fff7e8" stroke-width="5" stroke-linecap="round"/>
+ <circle cx="111" cy="147" r="9" fill="#df9f7b" opacity=".6"/>
+ <circle cx="243" cy="145" r="9" fill="#df9f7b" opacity=".6"/>
+ <!-- hat -->
+ <path d="M112 58 Q176 28 241 61 L225 75 Q179 53 128 76Z" fill="#241b19" stroke="#211913" stroke-width="6"/>
+ <path d="M133 58 L133 17 Q178 0 219 18 L223 60 Q183 43 133 58Z" fill="#241b19" stroke="#211913" stroke-width="6"/>
+ <path d="M134 38 Q174 27 220 41 L220 51 Q176 39 133 52Z" fill="#d7aa4c"/>
+ <path d="M94 76 Q176 56 256 77" fill="none" stroke="#211913" stroke-width="9" stroke-linecap="round"/>
+ <path d="M132 21 Q180 5 221 24" fill="none" stroke="#fff8e3" stroke-width="4" opacity=".35"/>
+ <!-- sparkle -->
+ <path d="M280 57 L285 71 L299 76 L285 81 L280 94 L275 81 L262 76 L276 71Z" fill="#e9b44d" stroke="#211913" stroke-width="3"/>
+ </svg></div></div></header>
+<div class="ribbon">«Solo quienes razonan llegan al gran final»</div>
+<section id="consentGate" class="consent-gate" aria-labelledby="consentTitle">
+  <div class="consent-top">
+    <p class="consent-kicker">★ Antes de entrar a la pista ★</p>
+    <h2 id="consentTitle">Compromiso de juego limpio</h2>
+    <p>¡Alto, participantes! Lean y acepten estas condiciones antes de comenzar la búsqueda del tesoro.</p>
+  </div>
+  <div class="consent-body">
+    <p>La participación y la entrega del premio están sujetas a estas reglas:</p>
+    <ol class="consent-rules">
+      <li><strong>Prohibido utilizar inteligencia artificial.</strong> No se permite usar ChatGPT, Gemini, Copilot ni otras herramientas de IA para resolver, traducir, calcular, generar respuestas o elaborar procedimientos durante la actividad.</li>
+      <li><strong>Todo el trabajo debe hacerse a mano.</strong> Conserven el análisis completo, las justificaciones y todos los procedimientos de los seis actos, incluyendo los ejercicios que encuentren dentro del cofre. Para los acertijos, expliquen brevemente su razonamiento por escrito.</li>
+      <li><strong>El premio requiere evidencias.</strong> Para reclamarlo, deben enviar por Telegram a <strong>@jeesquivel</strong> fotografías legibles de <strong>todas las hojas con su trabajo manuscrito</strong> y de <strong>la tarjeta encontrada en el libro con los dos nombres</strong>. Las respuestas correctas en la página web, por sí solas, no bastan.</li>
+      <li><strong>Trabajo honesto en pareja.</strong> No compartan respuestas entre equipos ni alteren los materiales de la biblioteca. <strong>Está prohibido mover, cambiar de lugar o retirar el cofre.</strong> Devuelvan la hoja al interior y dejen el cofre exactamente donde lo encontraron para que otros equipos también puedan encontrarlo. El docente verificará las evidencias antes de asignar los puntos.</li>
+    </ol>
+    <label class="consent-accept" for="consentCheck"><input id="consentCheck" type="checkbox" autocomplete="off"><span>He leído y acepto estas condiciones. Me comprometo a resolver la misión sin IA, conservar los procedimientos escritos a mano y enviar toda la evidencia solicitada si mi pareja reclama el premio.</span></label>
+    <div class="consent-action"><button class="btn btn-primary" id="startMission" type="button" disabled>ACEPTO · COMENZAR LA MISIÓN ★</button><span class="footnote">El botón se activa al marcar la casilla.</span></div>
+    <p class="consent-footnote">La web no toma fotografías ni envía archivos. Si reclaman el premio, ustedes enviarán las imágenes manualmente a través de Telegram. No incluyan rostros ni datos adicionales.</p>
+  </div>
+</section>
+<div id="activityContent" hidden>
+<div class="quick-rules"><strong>REGLAS RÁPIDAS:</strong> En parejas. Respuestas textuales en <strong>MAYÚSCULAS y sin tildes</strong>. Prohibido usar IA. <strong>No muevan ni retiren el cofre.</strong> Para reclamar el premio, envíen todos los procedimientos escritos a mano. No hay pistas y pueden retroceder.</div>
+<div class="two-col">
+  <aside class="panel sidebar" aria-labelledby="rules-title">
+    <div class="sign">Presenta: el gran Tangentín</div>
+    <h2 id="rules-title">Reglamento de la pista</h2>
+    <ul>
+      <li>Participen en <strong>parejas</strong> y resuelvan los <strong>6 actos</strong> en orden.</li>
+      <li>Las respuestas de texto se escriben en <strong>MAYÚSCULAS, sin tildes</strong>. Los números van <strong>sin unidades ni espacios</strong>.</li>
+      <li><strong>No se entregan pistas</strong>. Si fallan, la página los invitará a intentarlo de nuevo.</li>
+      <li>Pueden <strong>volver al acto anterior</strong> para revisar sus cálculos; los actos ya superados permanecen disponibles.</li>
+      <li><strong>Está prohibido usar herramientas de inteligencia artificial</strong> durante toda la búsqueda.</li>
+      <li>Conserven <strong>todos los análisis y procedimientos manuscritos</strong> de los seis actos, para enviarlos si reclaman el premio.</li>
+      <li>Usen únicamente los materiales permitidos por su docente y <strong>respeten los espacios que visiten</strong>.</li>
+      <li>El cofre del acto III contiene <strong>una hoja física con seis ejercicios</strong>. No está en el sitio web. <strong>No muevan ni retiren el cofre;</strong> déjenlo en su sitio para las demás parejas.</li>
+    </ul>
+    <div class="notice"><strong>Premio:</strong> la primera pareja que encuentre la tarjeta con sus dos espacios vacíos podrá escribir ambos nombres y enviar al docente por Telegram <strong>@jeesquivel</strong> la fotografía de la tarjeta <strong>junto con todas las hojas de análisis y procedimientos escritos a mano</strong>. Sin esa evidencia, el premio no será validado.</div>
+    <p class="footnote">Para visualizar las fórmulas matemáticas se necesita conexión a Internet. El sitio no recopila ni transmite las respuestas.</p>
+  </aside>
+  <section class="panel act-box" id="questSection" aria-labelledby="quest-title">
+    <div class="progress-head"><span id="quest-title">EL PROGRAMA DE HOY</span><span id="progressLabel">Acto 1 de 6</span></div>
+    <div id="track" class="track" role="group" aria-label="Progreso de los actos"></div>
+    <div class="steps-legend"><span>Taquilla</span><span>Gran final</span></div>
+    <div id="app"></div>
+  </section>
+</div>
+<footer class="foot"><span>ESTA FUNCIÓN PERTENECE A LA MATEMÁTICA ★</span><button id="resetBtn" class="reset" type="button">Reiniciar misión</button></footer>
+</div>
+</main>
+<script>
+'use strict';
+// Actualizar esta constante y la tarjeta física SOLO si se cambia el número de página.
+const CONFIG = Object.freeze({page:120, telegram:'jeesquivel', version:'circo-cdi-v4-2026'});
+const STORE_KEY='circo-bartle-'+CONFIG.version;
+const TEXT_TITLE='THE ELEMENTS OF REAL ANALYSIS';
+const $=id=>document.getElementById(id);
+const norm=value=>String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim().toLocaleUpperCase('es-CR').replace(/\s+/g,' ');
+const plain=value=>norm(value).replace(/[^A-ZÑ0-9]/g,'');
+const isNumeric=(value,answer)=>/^\d+$/.test(value.trim())&&value.trim()===String(answer);
+const acts=[
+  {
+    title:'La taquilla invisible',tag:'ACTO I · EL DESTINO', type:'text',answer:'BIBLIOTECA',placeholder:'NOMBRE DEL LUGAR',
+    desc:'No se entrega un mapa. Lean atentamente el boleto del maestro de ceremonias y escriban el lugar que descubran.',
+    puzzle:String.raw`<blockquote>No soy un aula, pero aquí se aprende.<br>Guardo voces que no producen sonido.<br>Mis habitantes tienen hojas, aunque no son árboles.<br>Para hallarme, basta seguir el rastro del conocimiento.<br><strong>¿Qué lugar soy?</strong></blockquote>`,
+    success:'¡Primer boleto validado! Desplácense al lugar descubierto. El próximo acto calcula una página secreta.'
+  },
+  {
+    title:'Las tres cerraduras de la página',tag:'ACTO II · LA SUMA SECRETA',type:'number',answer:120,placeholder:'SUMA DE LOS TRES RESULTADOS',
+    desc:'Resuelvan tres desafíos. El número de página es la suma de sus resultados, no una lista ni una concatenación. Escriban solo el total.',
+    puzzle:String.raw`
+      <div class="math-code math-zone">\[A=\int_{0}^{4}3x^{2}\,dx\]</div>
+      <div class="math-code math-zone">\[B=\lim_{x\to0}\frac{6\left(e^{4x}-1-4x\right)}{x^{2}}\]</div>
+      <div class="math-code math-zone">\[C=\lim_{x\to0}\frac{e^{8x}-1}{x}\]</div>
+      <div class="math-code math-zone">\[\boxed{P=A+B+C}\]</div>
+      <p><strong>Precisión:</strong> identifiquen las indeterminaciones y justifiquen cualquier aplicación de la regla de L’Hôpital.</p>`,
+    success:'¡La segunda cerradura se abrió! Anoten el número de página que obtuvieron: lo necesitarán al encontrar el libro correcto.'
+  },
+  {
+    title:'El cofre tras los libros',tag:'ACTO III · DOBLE DESAFÍO',type:'chest',placeholder:'RESULTADO DEL CÁLCULO',
+    desc:'Primero abran la cerradura matemática que identifica el libro donde se esconde un cofre. Después deberán hallar físicamente el cofre y descifrar la hoja que contiene.',
+    puzzle:String.raw`<p><strong>Primera cerradura.</strong> Calculen el valor exacto:</p>
+      <div class="math-code math-zone">\[K=\lim_{x\to0}\frac{\ln(1+7x)}{\sin x}\]</div>
+      <p>El resultado correcto abrirá aquí una <strong>ficha bibliográfica</strong>. No encontrarán el cofre buscando al azar.</p>`,
+    success:'¡El cofre ha entregado su palabra clave! Guárdenla: ayudará a identificar el libro final después de descifrar el cartel.'
+  },
+  {
+    title:'El cartel de los puntos misteriosos',tag:'ACTO IV · MENSAJE EN BRAILLE',type:'text',answer:TEXT_TITLE,placeholder:'TRADUCCIÓN EN MAYÚSCULAS',
+    desc:'El cartel del circo está escrito en braille inglés sin contracciones (grado 1). Descifren las cinco palabras y transcríbanlas a letras ordinarias.',
+    puzzle:String.raw`<p><strong>Mensaje:</strong></p>
+      <div class="braille" role="img" aria-label="Texto en cinco grupos de caracteres braille inglés sin contracciones; transcríbanlo al alfabeto ordinario.">
+        <span>⠞⠓⠑</span>
+        <span>⠑⠇⠑⠍⠑⠝⠞⠎</span>
+        <span>⠕⠋</span>
+        <span>⠗⠑⠁⠇</span>
+        <span>⠁⠝⠁⠇⠽⠎⠊⠎</span>
+      </div>
+      <p class="braille-meta">Braille inglés sin contracciones: una celda por letra. Es una representación visual sin relieve táctil.</p>
+      <p>Escriban las <strong>cinco palabras en inglés</strong>, <strong>separadas por espacios</strong> y en <strong>MAYÚSCULAS</strong>.</p>`,
+    success:'¡El cartel ha sido descifrado! Con el texto traducido y el apellido obtenido del cofre podrán completar la identificación de la obra.'
+  },
+  {
+    title:'El espejo de la continuidad',tag:'ACTO V · LA IDENTIDAD DE LA OBRA',type:'number',answer:8,placeholder:'VALOR DE K',
+    desc:'Un falso reflejo dice que la función no puede ser continua. Demuestren que sí puede serlo y determinen el valor exacto de la constante.',
+    puzzle:String.raw`<p>Hallen el valor de \(k\) para que \(f\) sea continua en \(x=1\):</p>
+      <div class="math-code math-zone">\[
+      f(x)=\begin{cases}
+      \dfrac{e^{4(x-1)}-1-4(x-1)}{(x-1)^2}, & x\ne 1,\\[6pt]
+      k, & x=1.
+      \end{cases}
+      \]</div>
+      <p>El reflejo intenta sustituir directamente y obtener \(0\). No lo imiten sin justificar la indeterminación.</p>`,
+    success:'¡El espejo ha sido vencido! Combinen el apellido que obtuvieron del cofre con el título en inglés que descifraron del cartel para consultar el catálogo y encontrar el ejemplar correcto.'
+  },
+  {
+    title:'La última función del trapecista',tag:'ACTO VI · SELLO FINAL',type:'number',answer:1,placeholder:'RESULTADO FINAL',
+    desc:'No basta con saber dónde buscar. Resuelvan la última prueba para abrir el certificado final y confirmar su búsqueda.',
+    puzzle:String.raw`<p>Determinen el valor exacto de \(S\):</p>
+      <div class="math-code math-zone">\[S=\int_{0}^{\pi}\sin x\,dx-\lim_{x\to0}\frac{\sin x}{x}\]</div>
+      <p>El resultado de \(S\) es la llave que permitirá abrir el certificado final de la misión.</p>`,
+    success:'¡El trapecista superó la última prueba! Pueden abrir el certificado de la misión.'
+  }
+];
+const fresh=()=>({agreed:false,act:0,phase:0,unlocked:false,completed:Array(6).fill(false),wrong:0});
+let state=fresh();
+try{
+ const v=JSON.parse(localStorage.getItem(STORE_KEY)||'null');
+ if(v&&Number.isInteger(v.act)&&v.act>=0&&v.act<=6&&Array.isArray(v.completed)&&v.completed.length===6){
+  state={...fresh(),...v,completed:v.completed.map(Boolean)};
+  state.phase=v.phase===1?1:0;
+  state.agreed=v.agreed===true;
+ }
+}catch(e){}
+const save=()=>{try{localStorage.setItem(STORE_KEY,JSON.stringify(state))}catch(e){}};
+function scrollToAct(){if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)$('questSection').scrollIntoView({behavior:'smooth',block:'start'});else $('questSection').scrollIntoView({block:'start'})}
+function feedback(message,kind){const el=$('feedback');if(!el)return;el.textContent=message;el.className='feedback show '+kind;}
+function typeset(){if(window.MathJax&&typeof window.MathJax.typesetPromise==='function'){
+  try{window.MathJax.typesetClear?.([$('app')]);window.MathJax.typesetPromise([$('app')]).catch(()=>{});}catch(e){}
+}}
+function updateTrack(){
+ $('progressLabel').textContent=state.act>=6?'Seis actos completados':`Acto ${state.act+1} de 6`;
+ $('track').innerHTML=Array.from({length:6},(_,i)=>`<span class="${state.completed[i]?'done':i===state.act?'active':''}" aria-label="Acto ${i+1}: ${state.completed[i]?'superado':i===state.act?'actual':'pendiente'}"></span>`).join('');
+}
+function controls(){const backAllowed=state.act>0;const forwardAllowed=state.act<6&&state.completed[state.act];
+ return `<div class="acts-controls"><button class="btn btn-secondary" id="backAct" ${backAllowed?'':'disabled'} type="button">← Acto anterior</button><button class="btn btn-primary" id="nextAct" ${forwardAllowed?'':'disabled'} type="button">${state.act===5?'Abrir final':'Siguiente acto'} →</button></div>`;}
+function bindControls(){const b=$('backAct');const n=$('nextAct');if(b)b.addEventListener('click',()=>{if(state.act>0){state.act--;state.phase=state.act===2&&state.unlocked?1:0;save();render();scrollToAct();}});if(n)n.addEventListener('click',()=>{if(state.act<6&&state.completed[state.act]){state.act++;if(state.act===2)state.phase=state.unlocked?1:0;save();render();scrollToAct();}});}
+function answerForm(placeholder,mode='text'){
+ return `<form id="answerForm" novalidate><label class="answer-label" for="answerInput">Su respuesta</label><div class="answer-row"><input id="answerInput" type="text" inputmode="${mode==='number'?'numeric':'text'}" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="${placeholder}" aria-describedby="formatHelp" maxlength="100" required><button class="btn btn-primary" type="submit">Comprobar ✓</button></div><p class="form-note" id="formatHelp">${mode==='number'?'Ingresen únicamente dígitos, sin unidades ni signos.':'Escriban en MAYÚSCULAS, sin tildes. La página convierte automáticamente las letras minúsculas.'}</p></form><div id="feedback" class="feedback" role="status" aria-live="polite"></div>`;
+}
+function successBlock(text){return `<div class="reveal"><h3>★ ¡Respuesta correcta!</h3><p>${text}</p></div>`;}
+function chestBook(){return String.raw`<div class="chest-info"><strong>FICHA DEL COFRE — ACCESO CONCEDIDO</strong><p>Localicen el libro <strong>«Introducción a la matemática discreta»</strong>, de <strong>Manuel Murillo-Tsijli</strong>.</p><p>Revisen la ubicación indicada por el catálogo de su biblioteca. <strong>Detrás de los ejemplares de esa obra</strong> encontrarán el cofre, colocado previamente por el docente con autorización de la biblioteca.</p><p><strong>Dentro hay una hoja con seis ejercicios.</strong> Resuélvanlos en orden y conviertan cada resultado en letra utilizando el abecedario español de 27 letras, con <strong>Ñ en la posición 15</strong> (no usen el alfabeto inglés).</p><p class="cofre-warning"><strong>¡ATENCIÓN! No muevan, cambien de lugar ni retiren el cofre.</strong> Saquen solamente la hoja para resolverla y, al terminar, devuélvanla al interior. Cierren el cofre y déjenlo exactamente donde estaba para que otras parejas puedan encontrarlo también.</p><div class="alphabet math-zone">\[\mathrm{A}=1,\quad \mathrm{N}=14,\quad \text{Ñ}=15,\quad \mathrm{O}=16,\quad \ldots,\quad \mathrm{Z}=27\]</div><p>Las seis letras formarán un apellido. Escríbanlo para continuar.</p></div>`;}
+function showChest(){
+ const a=acts[2];
+ if(state.phase===0){
+  $('app').innerHTML=`<div class="act-badge">${a.tag}</div><h2>${a.title}</h2><p class="story">${a.desc}</p><div class="puzzle math-zone">${a.puzzle}</div>`+
+   (state.unlocked?successBlock('Cerradura matemática desbloqueada. Ahora podrán consultar la ficha y continuar con el cofre.'):answerForm('RESULTADO NUMÉRICO','number'))+
+   (state.unlocked?`<button class="btn btn-primary" type="button" id="showCofre">Ir al cofre →</button>`:'')+controls();
+  if(!state.unlocked)bindForm('number',7,()=>{state.unlocked=true;state.phase=1;save();render();});
+  else $('showCofre').addEventListener('click',()=>{state.phase=1;save();render();});
+ }else{
+  $('app').innerHTML=`<div class="act-badge">${a.tag}</div><h2>La palabra dentro del cofre</h2><p class="story">Ya superaron la primera cerradura. Ahora busquen físicamente los seis ejercicios y descifren la palabra.</p>`+
+   chestBook()+
+   (state.completed[2]?successBlock(a.success):answerForm('APELLIDO DE SEIS LETRAS','text'))+
+   `<button type="button" id="backChest" class="back-mini">← Revisar la primera cerradura</button>`+controls();
+  if(!state.completed[2])bindForm('text','BARTLE',()=>{state.completed[2]=true;save();render();});
+  $('backChest').addEventListener('click',()=>{state.phase=0;save();render();});
+ }
+ bindControls();typeset();
+}
+function bindForm(type,expected,onRight){
+ $('answerForm').addEventListener('submit',e=>{
+  e.preventDefault();let v=$('answerInput').value;
+  if(!v.trim()){feedback('Escriban una respuesta antes de comprobar.','info');return;}
+  const ok=type==='number'?isNumeric(v,expected):plain(v)===plain(expected);
+  if(ok){onRight();return;}
+  state.wrong++;save();feedback('Esa no es la respuesta esperada. Revisen sus procedimientos y vuelvan a intentarlo.','wrong');$('answerInput').focus();
+ });
+ if(type==='text')$('answerInput').addEventListener('input',e=>{const start=e.target.selectionStart;const end=e.target.selectionEnd;e.target.value=e.target.value.toLocaleUpperCase('es-CR');if(start!==null&&end!==null)try{e.target.setSelectionRange(start,end)}catch(err){}});
+}
+function render(){
+ updateTrack();
+ if(state.act>=6){renderFinish();return;}
+ if(state.act===2){showChest();return;}
+ const a=acts[state.act];
+ $('app').innerHTML=`<div class="act-badge">${a.tag}</div><h2>${a.title}</h2><p class="story">${a.desc}</p><div class="puzzle math-zone">${a.puzzle}</div>`+
+ (state.completed[state.act]?successBlock(a.success):answerForm(a.placeholder,a.type))+controls();
+ if(!state.completed[state.act])bindForm(a.type,a.answer,()=>{state.completed[state.act]=true;save();render();});
+ bindControls();typeset();
+}
+function renderFinish(){
+ $('progressLabel').textContent='Misión completada';
+ const msg='¡Completamos El Gran Circo del Cálculo! Adjuntamos (1) foto de la tarjeta con ambos nombres y (2) fotos legibles de todo el análisis y de los procedimientos escritos a mano de los seis actos, incluidos los ejercicios del cofre. Confirmamos que no utilizamos IA. Integrantes: [NOMBRE 1] y [NOMBRE 2].';
+ $('app').innerHTML=`<div class="act-badge">GRAN FINAL · ¡VICTORIA!</div><div class="end"><h2>¡El tesoro está al alcance!</h2><div class="winner-title">LOS 6 ACTOS SUPERADOS ★</div><p>Busquen el libro <strong lang="en">THE ELEMENTS OF REAL ANALYSIS</strong>, de <strong>Robert G. Bartle</strong>, y abran el ejemplar en la <strong>página ${CONFIG.page}</strong>.</p><p>Utilicen el catálogo de la biblioteca para identificar su ubicación física. <strong>No desordenen los libros, no retiren la tarjeta ni muevan o extraigan el cofre de su lugar.</strong></p><div class="tg-instructions"><strong>Comprobación de la misión</strong><ol><li>Comprueben si los dos espacios de la tarjeta siguen vacíos.</li><li>Si son los primeros, escriban los nombres de ambos integrantes.</li><li>Tomen una fotografía <strong>legible de la tarjeta</strong> con los dos nombres.</li><li>Fotografíen <strong>todas sus hojas con los análisis y procedimientos manuscritos</strong> de los seis actos, incluidos los seis ejercicios del cofre. Eviten rostros y datos personales innecesarios.</li><li>Abran el chat con <strong>@${CONFIG.telegram}</strong> en Telegram, adjunten <strong>todas las fotografías</strong> y envíen el mensaje. <strong>No se valida el premio sin la evidencia completa ni si utilizaron IA.</strong></li></ol></div><div class="mini-links"><a class="btn btn-telegram" href="https://t.me/${CONFIG.telegram}" rel="noopener noreferrer" target="_blank">Abrir Telegram ↗</a><button class="btn btn-secondary" type="button" id="copyMsg">Copiar mensaje</button></div><p class="finish-small" role="status" aria-live="polite" id="copyInfo"></p><p class="footnote">La web no envía fotografías automáticamente ni determina quién llegó primero. El docente revisará todos los procedimientos manuscritos, la tarjeta y el cumplimiento de la regla de no utilizar IA antes de otorgar los puntos.</p><div class="acts-controls"><button class="btn btn-secondary" type="button" id="backFromFinish">← Volver al acto VI</button></div></div>`;
+ $('copyMsg').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(msg);$('copyInfo').textContent='Mensaje copiado. Complétenlo y adjunten la foto.'}catch(e){$('copyInfo').textContent='Copien el mensaje manualmente: '+msg}});
+ $('backFromFinish').addEventListener('click',()=>{state.act=5;save();render();scrollToAct();});
+}
+function renderEntry(){
+ const accepted=state.agreed===true;
+ $('consentGate').hidden=accepted;
+ $('activityContent').hidden=!accepted;
+ if(accepted)render();
+ else{ $('consentCheck').checked=false; $('startMission').disabled=true; }
+}
+$('consentCheck').addEventListener('change',e=>{ $('startMission').disabled=!e.target.checked; });
+$('startMission').addEventListener('click',()=>{
+ if(!$('consentCheck').checked)return;
+ state.agreed=true;save();renderEntry();scrollToAct();
+});
+$('resetBtn').addEventListener('click',()=>{
+ if(confirm('¿Quieren borrar el avance de este dispositivo y volver a aceptar las condiciones antes de comenzar?')){
+  state=fresh();save();renderEntry();$('consentGate').scrollIntoView({block:'start'});
+ }
+});
+renderEntry();
+// Renderiza fórmulas incluso cuando MathJax termina de cargar después de la interfaz.
+window.addEventListener('load',()=>typeset());
+</script></body></html>
